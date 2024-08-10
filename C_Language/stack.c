@@ -45,7 +45,7 @@ int pop(){
     printf("%d", stack[address]);
     address--;
 
-    // if I return the element and then do address--, it returns the lement but the adresss code never excecutes
+    // if I return the element and then do address--, it returns the element but the adresss code never excecutes
     // this is because return statement returns the power to function call and anything after that is essentially unreachable 
     
 
