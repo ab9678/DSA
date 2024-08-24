@@ -13,7 +13,7 @@ node* createlist();     // doubly linked list
 
 node* append();   //case1 add at front case  to add at rear case3 at a specified location
 
-node* delete();   // delete node 
+void deleteData();   // delete node 
 
 node* Display();
 
@@ -31,7 +31,7 @@ int len(){
         i++;
     } 
     tailIndex = i;
-    printf("TAIL = %d\n",tailIndex);
+    // printf("TAIL = %d\n",tailIndex);
     return i;
 }
 
@@ -51,9 +51,11 @@ int main(){
         }else if (choice == 2){
             append();
 
+        }else if (choice == 3){
+            deleteData();
         }
         else if(choice == 4){
-            len();
+            printf("Length:%d",len());
             Display();
 
         }else if (choice == 5){
@@ -66,7 +68,7 @@ int main(){
 node* createlist(){
     
     node* temp=NULL;
-    node* p=NULL;
+    node* p=NULL;   // iterator
     
     
     char usrChoice = 'y';
@@ -128,6 +130,7 @@ node* append(){
     int location ;
     int index = 0 ;
     len();
+    printf("TAIL: %d",len());
     printf("location: ");
     scanf("%d",&location);
 
@@ -136,7 +139,7 @@ node* append(){
     }
     else{
         if (tailIndex == 0){
-            printf("Empty list, Create the list first \n");
+            printf("\nEmpty list, Create the list first");
             return 0;
         }
         printf("New Data: ");
@@ -181,3 +184,48 @@ node* append(){
     
 }
 // 30->20->25->null         temp -> [prev|data|next]    
+void deleteData(){
+    len();
+    int position , deleted, i=0;
+    
+    printf("Position: ");
+    scanf("%d",&position);
+
+    node* p = NULL;
+    if (position<0 || position > len()){
+        printf("Invalid Position");
+        return;
+    }
+    else{
+        if (position == 0){
+            // delete from head
+            p = head;
+            deleted = p->data;
+            p->next->prev = NULL;   // make the second node the first, first node's previous is always NULL so make the prev here NULL
+            head = p->next;     // take haed to that node
+
+            free(p);    // free the memory consumed by that node
+
+        }
+        else if (position == (len()-1)){
+            // delete from tail
+            p=tail;
+            deleted = p->data;
+            tail = p->prev;     // update tail to last-second node
+            tail->next = NULL;      // the last-second node should not be pointing to anything for it to become the last node
+            free(p);    // free memory of that node
+            
+        }
+        else{
+            // delete from a specific position
+            p = head;
+            while (i != position-1){
+                
+            }
+        }
+    }
+
+    printf("Delete Data: %d",deleted);
+
+
+}
