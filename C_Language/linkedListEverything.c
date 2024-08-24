@@ -200,11 +200,16 @@ void deleteData(){
         if (position == 0){
             // delete from head
             p = head;
-            deleted = p->data;
-            p->next->prev = NULL;   // make the second node the first, first node's previous is always NULL so make the prev here NULL
-            head = p->next;     // take haed to that node
+            if (p->next == NULL){   // when only one element is present
+                head = NULL;
+                free(p);
+            }else{
+                deleted = p->data;
+                p->next->prev = NULL;   // make the second node the first, first node's previous is always NULL so make the prev here NULL
+                head = p->next;     // take haed to that node
 
-            free(p);    // free the memory consumed by that node
+                free(p);    // free the memory consumed by that node
+            }
 
         }
         else if (position == (len()-1)){
@@ -219,9 +224,18 @@ void deleteData(){
         else{
             // delete from a specific position
             p = head;
-            while (i != position-1){
-                
+            while (i != position){
+                p = p->next;
+                i++;
             }
+            
+            // now p is in the required node
+            deleted = p->data;
+            p->next->prev = p->prev;
+            p->prev->next = p->next;
+            free(p);
+
+
         }
     }
 
@@ -229,3 +243,5 @@ void deleteData(){
 
 
 }
+
+// its 149 actual lines of code.
