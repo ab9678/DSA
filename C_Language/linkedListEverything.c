@@ -1,5 +1,20 @@
 # include <stdio.h>
 # include <stdlib.h>
+// #define GRN "\e[0;32m"
+// #define RESET "\e[0m"
+#include <sys/ioctl.h>
+#include<unistd.h>
+
+// void draw_line() {
+//     struct winsize w;
+//     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);  // Get terminal size
+//     int width = w.ws_col;  // Terminal width in characters
+//     for (int i = 0; i < width; i++) {
+//         printf(GRN"-");
+//     }
+//     printf(RESET"\n");
+// }
+
 
 typedef struct node{
     int data ;
@@ -19,7 +34,7 @@ node* Display();
 
 
 node* head = NULL;
-int tailIndex=0;        // global variables
+int tailIndex=0; //null position's index        // global variables
 node* tail=NULL;
 
 
@@ -41,6 +56,8 @@ int main(){
     int choice ;
 
     while (1){
+        printf("\n");
+        draw_line();
         printf("\n1.Create List\n2.Append list\n3.Delete Element (instructions same as above)\n4.Display\n5.EXIT\n\nChoose: ");
 
 
@@ -55,7 +72,7 @@ int main(){
             deleteData();
         }
         else if(choice == 4){
-            printf("Length:%d",len());
+            printf("Length:%d\n",len());
             Display();
 
         }else if (choice == 5){
@@ -113,13 +130,18 @@ node* createlist(){
 
 }
 node* Display(){
-    node* p = NULL;
 
-    p = head;
-    while (p != NULL){
-        
-        printf("%d->",p->data);
-        p=p->next;
+    if (len() == 0){
+        printf("\nEmpty linked list");
+    }else{
+        node* p = NULL;
+
+        p = head;
+        while (p != NULL){
+            
+            printf("%d->",p->data);
+            p=p->next;
+        }
     }
 }
 
@@ -192,6 +214,10 @@ void deleteData(){
     scanf("%d",&position);
 
     node* p = NULL;
+    if (head == NULL){
+        printf("Create list first\n");
+        return;
+    }
     if (position<0 || position > len()){
         printf("Invalid Position");
         return;
@@ -201,6 +227,7 @@ void deleteData(){
             // delete from head
             p = head;
             if (p->next == NULL){   // when only one element is present
+                deleted = p->data;
                 head = NULL;
                 free(p);
             }else{
