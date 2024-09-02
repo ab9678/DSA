@@ -1,7 +1,15 @@
 # include <stdio.h>
 # include <stdlib.h>
+typedef struct node{
+    int data;
+    int next;
+}node;
 
-
+node* tail=NULL;
+void createlist(){
+    
+    
+}
 int main(){
     int choice;
     while (1){
