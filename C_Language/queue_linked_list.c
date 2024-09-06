@@ -23,10 +23,7 @@ void enqueue(){
         rear=newnode;
     }
 
-
-
 }
-
 
 void dequeue(){
     node* temp = NULL;
