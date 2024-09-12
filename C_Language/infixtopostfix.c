@@ -95,6 +95,7 @@ int main(){
     }
     // Pop any remaining operators in the stack
     while (top1 != -1) {
+        printf("\nPopping remaining stuff\n");
         pop1();
     }
     // Display the final postfix expression
