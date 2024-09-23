@@ -36,24 +36,38 @@ int total_average_largestSmallest(){
     linked_list* temp=head;
     int total=0;
     int i=0;
+    int largest = 0;
+    int smallest=temp->data;
     while (temp!=NULL)
     {
         i++;
         total+=temp->data;
+        if(temp->data<smallest){
+            smallest=temp->data;
+        }
+        if(temp->data>largest){
+            largest = temp->data;
+        }
         temp=temp->next;
         
     }
 
-    printf("\nTotal=%d\nAverage=%d",total,total/i);
+    printf("\nTotal=%d\nAverage=%d\nLargest=%d\nSmallest=%d",total,total/i,largest,smallest);
     
 }
 
+void display(){
+    linked_list* temp=head;
+    printf("\nOriginal list is:--\n");
+    while(temp!=NULL){
+        printf("%d->",temp->data);
+        temp=temp->next;
+    }
+}
  
 
 int main(){
     createlist();
     total_average_largestSmallest();
-    // largest_smallest();
-    // display();
-    // average();
+    display();
 }

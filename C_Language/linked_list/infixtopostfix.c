@@ -49,8 +49,9 @@ void display() {
 
 int main(){
     printf("Expression: ");
-    fgets(exprs,N,stdin);
-        exprs[strcspn(exprs, "\n")] = '\0';
+    // fgets(exprs,N,stdin);
+    //     exprs[strcspn(exprs, "\n")] = '\0';
+    gets(exprs);
 
     printf("Original: ");
     puts(exprs);
