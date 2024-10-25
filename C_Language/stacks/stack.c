@@ -1,3 +1,18 @@
+// // lifo
+// if top<size
+// top = -1
+// top++ = 0
+// stack[0] = data
+
+/*
+
+
+        |   |
+        |   |   
+  top   |___|
+    
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 # define N 5
@@ -99,3 +114,27 @@ int main(){
     // }
 
 }
+
+
+
+// int main(){
+
+//     while(1){
+//         if (choicse == 1){
+//             push();
+//         }else if ( choice == 2){
+//             pop();
+
+//         }else if (choice == 3){
+//             peek();
+//         }...
+//         else if (choice == exit){
+//             exit(0);    // stdlib.h     0 success, 1 failure
+//         }
+//         else{
+//             print("invalid")
+//         }
+//     }
+
+
+// }
