@@ -4,7 +4,17 @@
 # define v 5
 bool e[v][v];
 int d[v];
+int q[v];   // is going to store indexes not values
+// int visited[v];
+// int vis=-1;
+int f = -1;
+int r = 0;
 
+void initialiseQ(){
+    for (int i =0 ;i<v ;i++){
+        q[i]=-1;
+    }
+}
 int getIndex(int data){
     int i;
     for(i=0;i<v;i++){
@@ -51,6 +61,76 @@ void displayConnections(){
     }
 }
 
+bool emptyQ(){
+    if(f==-1 && r==-1){
+        return true;
+    }
+    return false;
+}
+
+void enqueue(int data){
+
+    int i;
+    for (i=0;i<r;i++){
+        if(q[i]==data){     // if the index comming is already present in the q or was present but is dequeued, then it will not enqueue the same index again, hence we are counting from 0 not front. 
+            return;
+        }
+    }
+    if(q[r]==data){
+        return;
+    }
+
+    if(emptyQ()==true){
+        f=0;
+        r=0;
+        q[r]=data;
+    }else{
+        r++;
+        q[r]=data;
+    }
+}
+
+void dequeue(){
+    if(emptyQ()==true){
+        return;
+    }
+    else if(f==r){
+
+        f=-1;
+        r=-1;
+
+    }else{
+ 
+        f++;
+    }
+
+    // no need for fullq because we are playing with a fixed size and we know that the max no. of elements possible
+}
+
+void findNeighbours(int mainFunctionValue){
+    int parent,j;
+
+
+    if(emptyQ()==true){
+        enqueue(mainFunctionValue);
+    }
+
+
+    while(emptyQ() == false){
+        
+        parent=q[f];
+        
+        
+        for(j=0;j<v;j++){
+            if(e[parent][j]==true){
+                enqueue(j);     // j are the neighbours to the parent(all are indices not real data)
+            }
+        }
+        
+
+        dequeue();
+    }
+}
 
 
 int main(){
@@ -89,5 +169,11 @@ int main(){
     displayConnections();
     printf("\n");
 
+    findNeighbours(2);
+    printf("\n");
+    for (i=0;i<v;i++){
+        printf("%d\t",d[q[i]]);
+    }
+    printf("\n");
     // input done nodes are present 
 }

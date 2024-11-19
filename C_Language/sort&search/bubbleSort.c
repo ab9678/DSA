@@ -1,7 +1,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
-// remember bubble sort is based on the logic that after each ietration of the whole array the largest elements bubbles up, so we need to decrease the size by 1 in eache iteration, also, if no swaps occur than we say array is sorted, for which we will use a variable which will track for if any swap occured. If yes than we will go for another iteration else this is the final sorted Array.
+// remember bubble sort is based on the logic that after each itration of the whole array the largest elements bubbles up, so we need to decrease the size by 1 in each iteration, also, if no swaps occurs then we say the array is sorted, for which we will use a variable which will track for if any swap occured. If yes than we will go for another iteration else this is the final sorted Array.
 
 void bsort(int *a){
 

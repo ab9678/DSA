@@ -22,7 +22,7 @@ void sort(int *a){
 }
 
 void search(int *a, int data, int start, int end){
-    int element;
+    // int element;
     int index = (start+end)/2;   // because lets say in second iteration we have a subset with index 5 to 10 , so divide it, we will get 2, but we need 2 indeices after 5th index, so we can add it to 5, 5+2 = 7 so index will be in 8; EITHER, or we can just add the start & end and divide that by 2, eg. 5+10=15/2=7
 
     if(start >= end) {
