@@ -69,39 +69,9 @@ while(front<=rear){
 }
     printf("\nDFS: ");
     for(i=0;i<v;i++){
-        visited[i]=0;
+        visited[i]=0; 
     }
     dfs(0,visited,edge);
     printf("\n");
 
 }
-
-
-
-
-
-// int main() {
-//     int edge[V][V] = {0};      // Adjacency matrix
-//     int visited[V] = {0};      // Visited array
-//     int e, src, dest;
-
-//     // Input: Number of edges
-//     printf("Enter the number of edges: ");
-//     scanf("%d", &e);
-
-//     // Input: Edges
-//     for (int i = 0; i < e; i++) {
-//         printf("Enter source and destination: ");
-//         scanf("%d %d", &src, &dest);
-//         edge[src][dest] = 1;
-//         edge[dest][src] = 1;  // Undirected graph
-//     }
-
-//     printf("DFS Traversal: ");
-//     dfs(0, visited, edge);  // Start DFS from node 0
-//     printf("\n");
-
-//     return 0;
-// }
-
-
